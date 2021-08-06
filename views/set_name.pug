@@ -1,0 +1,26 @@
+extends layout 
+block head
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css')
+  style.
+    body {
+      background-color: #283593;
+    }
+    
+block header
+  include header
+
+block main
+  br
+  br
+  br
+  .container
+    .row
+      center
+        h4(style="color: #fff") Введите свой ник:
+      form(action="/", method='post')
+        .col.s8
+          input(type="text", name="name")
+        .col.s4 
+          input(type="submit", class="btn")
+
+block footer
