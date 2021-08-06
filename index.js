@@ -23,4 +23,4 @@ app.post('/chat', chatSetView);
 
 app.get('/clear',  clearView);
 
-app.listen(); //port
+app.listen(port); //port
