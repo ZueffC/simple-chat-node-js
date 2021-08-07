@@ -22,7 +22,7 @@ function indexSetView(req, res){
 
 function chatView(req, res){
     if(req.cookies.name){
-        res.render("chat", { msgs: msgs });
+        res.render("chat", { msgs: msgs, "name": req.cookies.name });
     } else {
         res.redirect("/");
     }
@@ -32,7 +32,9 @@ function chatSetView(req, res){
     let msg = req.body.data;
     let name = req.cookies.name;
     let msg_color = req.cookies.msg_color;
-    msgs.push([name, msg, msg_color]);
+    if (msg.trim().length >= 3){
+        msgs.push([name, msg, msg_color]);
+    }
     res.redirect("/chat");
 }
 

@@ -1,9 +1,10 @@
 {
-  "name": "warm-harbor-68535",
+  "name": "webapp-vue",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "serve": "nodemon index.js",
     "start" : "node index.js"
   },
   "author": "",

@@ -1,26 +1,44 @@
 extends layout 
 block head
   link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css')
+  script(src='https://code.jquery.com/jquery-3.6.0.min.js')
   link(rel='stylesheet' href='/assets/css/styles.css')
+    
 
 block header
   include header
 
 block main
   br
-  .container
+  .container#cont
+    div#doc(style="overflow: hidden")
+      p
     .row
-      form(action="/chat", method='post').form-1
-        .col.s10
-          input(type="text", name="data")
-        .col.s2
-          input(type="submit", class="btn") 
+      center
+        form(action="/chat", method='post').form-1
+          .col.s2
+            button#name_of_user(class="btn-large disabled") #{name}
+          .col.s6
+            input(type="text", name="data")
+          .col.s2
+            input(type="submit", class="btn")
+            
 
-    div#doc
-      <iframe src='/chat_view' width='100%' height='100%' frameborder='no' allowtransparency seamless></iframe>
+
     script.
       setInterval(function(){
-        document.getElementById('doc').innerHTML = "<iframe src='/chat_view' width='100%' height='100%' frameborder='no' allowtransparency seamless></iframe>";
-      }, 2000)
+        $('#doc').load('/chat_view');
+      }, 100);
+      setTimeout(function(){
+        window.scrollTo(0, document.body.scrollHeight);
+      }, 200);
+      setInterval(function(){
+        if( document.documentElement.clientWidth < 630 ){
+          let name_of_user = document.querySelector("#name_of_user")
+          name_of_user.classList.add("hidden");
+        } else { 
+          name_of_user.classList.remove("hidden");  
+        }}, 20);
 
+  br
 block footer

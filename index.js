@@ -3,7 +3,7 @@ let cookieParser = require('cookie-parser')
 let express = require('express');
 let uuid = require('uuid');
 let app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080; //For Heroku
 
 let secret = uuid.v4(); 
 console.log(secret);
