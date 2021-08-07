@@ -1,10 +1,11 @@
 .form-1 {
-  position: inherit;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 1rem;
-  text-align: center;
+  position: unset;
+	right: 0;
+	bottom: -1px;
+	left: 5%;
+	padding: 1rem;
+	text-align: center;
+	padding-left: 5%;
 }
 iframe {
   overflow-x:hidden;

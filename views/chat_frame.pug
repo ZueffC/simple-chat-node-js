@@ -1,3 +1,13 @@
 body
-  each msg in msgs 
-    <p class="messages" style="color: #{ msg[2] }"> #{ msg[0] } - #{ msg[1] } </p> 
+  table
+    thead
+      tr
+          th Ники
+          th Сообщения
+
+    tbody
+      each msg in msgs 
+        tr
+          <td><p class="messages" style="color: #{ msg[2] }"> <b> #{ msg[0] } </b>  </td>
+          td 
+            i #{ msg[1] }

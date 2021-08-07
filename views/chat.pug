@@ -1,6 +1,7 @@
 extends layout 
 block head
   link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css')
+  link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
   script(src='https://code.jquery.com/jquery-3.6.0.min.js')
   link(rel='stylesheet' href='/assets/css/styles.css')
     
@@ -17,14 +18,14 @@ block main
       center
         form(action="/chat", method='post').form-1
           .col.s2
-            button#name_of_user(class="btn-large disabled") #{name}
+            button#name_of_user(class="btn-large z-depth-3 disabled") #{name}
           .col.s6
-            input(type="text", name="data")
+            input(type="text", class="z-depth-3", name="data")
           .col.s2
-            input(type="submit", class="btn")
+            button(type="submit", class="btn z-depth-3 pulse waves-effect waves-ligh")
+              i.material-icons send
+
             
-
-
     script.
       setInterval(function(){
         $('#doc').load('/chat_view');
@@ -33,12 +34,16 @@ block main
         window.scrollTo(0, document.body.scrollHeight);
       }, 200);
       setInterval(function(){
-        if( document.documentElement.clientWidth < 630 ){
+        if( document.documentElement.clientWidth < 760 ){
           let name_of_user = document.querySelector("#name_of_user")
           name_of_user.classList.add("hidden");
         } else { 
           name_of_user.classList.remove("hidden");  
         }}, 20);
 
+        Notification.requestPermission(function(permission){
+        // переменная permission содержит результат запроса
+        console.log('Результат запроса прав:', permission);
+        });
   br
 block footer
