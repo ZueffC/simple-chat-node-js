@@ -1,4 +1,4 @@
-let { indexView, indexSetView, chatView, chatSetView, clearView, chatFrameView } = require('./routes/indexView')
+let { indexView, indexSetView, chatView, chatSetView, clearView, chatFrameView, profileView } = require('./routes/indexView')
 let cookieParser = require('cookie-parser')
 let express = require('express');
 let uuid = require('uuid');
@@ -22,5 +22,6 @@ app.get('/chat_view', chatFrameView);
 app.post('/chat', chatSetView);
 
 app.get('/clear',  clearView);
+app.get('/profile', profileView);
 
 app.listen(port); 
