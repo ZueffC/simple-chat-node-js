@@ -6,17 +6,18 @@ function indexView(req, res){
         res.redirect("/chat");
     } else {
         res.render("set_name");
-        console.log(req.cookies);
     }
 }
 
 function indexSetView(req, res){
-    if(req.cookies.name){
-        res.redirect("/chat");
-    } else {
+    if (req.body.name !== undefined && req.body.name.trim().length >= 3){
         res.cookie('name', req.body.name);
         res.cookie('msg_color', randomColor());
         res.redirect("/chat");
+    } else if(req.cookies.name){
+        res.redirect("/chat");
+    } else {
+        res.redirect("/");
     }
 }
 
@@ -44,7 +45,19 @@ function clearView(req, res){
 }
 
 function chatFrameView(req, res){
-    res.render("chat_frame", { msgs: msgs });
+    if(req.cookies.name !== undefined){
+        res.render("chat_frame", { msgs: msgs });
+    } else {
+        res.send("404 error");
+    }
 }
 
-module.exports = { indexView: indexView, indexSetView: indexSetView, chatView: chatView, chatSetView: chatSetView, clearView: clearView, chatFrameView: chatFrameView }
+function profileView(req, res){
+    if(req.cookies.name !== undefined){
+        res.render("profile", { "color": req.cookies.msg_color, "name": req.cookies.name });
+    } else {
+        res.redirect("/");
+    }
+}
+
+module.exports = { indexView: indexView, indexSetView: indexSetView, chatView: chatView, chatSetView: chatSetView, clearView: clearView, chatFrameView: chatFrameView, profileView: profileView }
