@@ -1,4 +1,4 @@
-let { indexView, indexSetView, chatView, chatSetView, clearView, chatFrameView, profileView } = require('./routes/indexView')
+let { indexView, indexSetView, chatView, chatSetView, clearView, chatFrameView, profileView } = require('./routes/router')
 let cookieParser = require('cookie-parser')
 let express = require('express');
 let uuid = require('uuid');
